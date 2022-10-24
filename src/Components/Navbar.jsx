@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { authUser } from '../Context/UserContext';
 
 const Navbar = () => {
-
+    const { user } = useContext(authUser)
+    console.log(user);
     return (
         <div className="navbar bg-base-100 container">
             <div className="flex-1">
@@ -16,13 +18,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="flex-none">
-                <div className="tooltip tooltip-bottom" data-tip="hello">
-                    <label className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="" alt='img' />
-                        </div>
-                    </label>
-                </div>
+                {user ?
+                    <div className="tooltip tooltip-bottom" data-tip={user}>
+                        <label className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src="" alt='img' />
+                            </div>
+                        </label>
+                    </div>
+                    : <Link to='/login'><button className='btn btn-outline mx-3'>Login</button></Link>}
             </div>
         </div>
     );
