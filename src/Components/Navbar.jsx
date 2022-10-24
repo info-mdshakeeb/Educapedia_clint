@@ -5,11 +5,11 @@ import { authUser } from '../Context/UserContext';
 const Navbar = () => {
     const { user, logutOut } = useContext(authUser)
     return (
-        <div className="navbar bg-base-100 container">
+        <div className="navbar bg-base-100 ">
             <div className="flex-1">
                 <Link to='/' className="btn btn-ghost normal-case text-xl">Educapedia</Link>
             </div>
-            <div className="flex-none">
+            <div className="flex-none mr-20">
                 <ul className="menu menu-horizontal p-0">
                     <li><NavLink to='/courses'>Courses</NavLink></li>
                     <li><NavLink to='/faq'>FAQ</NavLink></li>
@@ -18,15 +18,15 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 {user ?
-                    <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                    <div className="tooltip tooltip-left" data-tip={user?.displayName}>
                         <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
                                 <div className="w-10 rounded-full">
                                     <img src={user?.photoURL} alt='img' />
                                 </div>
                             </label>
-                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                <li onClick={logutOut}>Logout</li>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-400 rounded-box w-52">
+                                <button className=' text-red-400' onClick={logutOut}>Logout</button>
                             </ul>
                         </div>
                     </div>
