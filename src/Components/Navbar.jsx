@@ -3,8 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 
 const Navbar = () => {
-    const { user } = useContext(authUser)
-    console.log(user);
+    const { user, logutOut } = useContext(authUser)
     return (
         <div className="navbar bg-base-100 container">
             <div className="flex-1">
@@ -19,12 +18,17 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 {user ?
-                    <div className="tooltip tooltip-bottom" data-tip={user}>
-                        <label className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="" alt='img' />
-                            </div>
-                        </label>
+                    <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user?.photoURL} alt='img' />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                <li onClick={logutOut}>Logout</li>
+                            </ul>
+                        </div>
                     </div>
                     : <Link to='/login'><button className='btn btn-outline mx-3'>Login</button></Link>}
             </div>

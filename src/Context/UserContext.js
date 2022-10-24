@@ -22,8 +22,7 @@ const UserContext = ({ children }) => {
     const setUserNAme = (url, name) => updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: url
-    }
-    )
+    })
     const varifymail = () => sendEmailVerification(auth.currentUser);
     const updatePassword = (email) => sendPasswordResetEmail(auth, email)
     useEffect(() => {
