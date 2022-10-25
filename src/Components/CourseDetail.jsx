@@ -3,10 +3,10 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 
 const CourseDetail = () => {
+    const bookdata = useLoaderData()
     const { setBookDetails } = useContext(authUser);
-    const bookdetail = useLoaderData()
-    const { name, picture, description } = bookdetail;
-    // setBookDetails(bookdetail);
+    const { name, picture, description } = bookdata;
+    setBookDetails(bookdata);
     return (
         <div className=" w-4/5 lg:w-3/5 mx-auto mt-10">
             <div className="card bg-base-100 shadow-xl">

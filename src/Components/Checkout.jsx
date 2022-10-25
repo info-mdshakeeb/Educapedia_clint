@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { authUser } from '../Context/UserContext';
 
 const Checkout = () => {
+    const { bookDetails } = useContext(authUser);
 
     return (
         <div>
-            hello
+            {bookDetails?.name}
         </div>
     );
 };
