@@ -9,9 +9,10 @@ const Provider = new GoogleAuthProvider();
 const { successMessage } = AlartMessage()
 
 const UserContext = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState('')
     const [error, setError] = useState('');
-    // console.log(user);
+    const [loading, setloading] = useState(true);
+    const [bookDetails, setBookDetails] = useState('');
 
     //login & signUp f:
     const createUser = (email, pass) => createUserWithEmailAndPassword(auth, email, pass);
@@ -28,14 +29,19 @@ const UserContext = ({ children }) => {
     const updatePassword = (email) => sendPasswordResetEmail(auth, email)
 
     useEffect(() => {
-        const unsuscribe = onAuthStateChanged(auth, currentUser => {
+        const unsuscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            console.log(currentUser)
+            setloading(false);
         })
-        return () => unsuscribe();
-    },)
+        return () => {
+            unsuscribe();
+        }
+    }, [])
 
     const authInfo = {
         user, setUser, error, setError,
+        loading, setloading, bookDetails, setBookDetails,
         googlelogin, createUser, loginWithEmail, logutOut,
         varifymail, setUserNAme, updatePassword
     }
