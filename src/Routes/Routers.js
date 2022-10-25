@@ -13,7 +13,10 @@ export const router = createBrowserRouter([
         errorElement: <p>Worng route</p>,
         children: [
             { path: '/', element: <Courses /> },
-            { path: '/courses', element: <Courses /> },
+            {
+                path: '/courses',
+                element: <Courses />,
+            },
             { path: '/faq', element: <FAQ /> },
             { path: '/blog', element: <Blog /> },
             { path: '/login', element: <Login /> },

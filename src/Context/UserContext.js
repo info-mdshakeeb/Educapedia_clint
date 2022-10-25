@@ -13,7 +13,6 @@ const UserContext = ({ children }) => {
     const [error, setError] = useState('');
     // console.log(user);
 
-
     //login & signUp f:
     const createUser = (email, pass) => createUserWithEmailAndPassword(auth, email, pass);
     const loginWithEmail = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
@@ -27,6 +26,7 @@ const UserContext = ({ children }) => {
     })
     const varifymail = () => sendEmailVerification(auth.currentUser);
     const updatePassword = (email) => sendPasswordResetEmail(auth, email)
+
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
