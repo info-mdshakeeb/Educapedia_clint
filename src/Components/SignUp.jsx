@@ -5,9 +5,31 @@ import AlartMessage from '../Hooks/AlartMessage';
 
 const SignUp = () => {
     const { successMessage } = AlartMessage()
-    const { error, setErro, createUser, setUserNAme, varifymail } = useContext(authUser);
+    const { error, setError, createUser, setUserNAme, varifymail } = useContext(authUser);
+    const heandelRegister = e => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const name = form.username.value;
+        const pass = form.pass.value;
+        const url = form.photourl.value;
+
+        createUser(email, pass)
+            .then(rs => {
+                setError('')
+                setUserNAme(name, url)
+                    .then(re => {
+                        varifymail()
+                            .then(rs => {
+                                successMessage('Account Created')
+                                setError('Varifiaction mail sand Your mail')
+                            })
+                    })
+            })
+            .catch(er => setError(er.message))
+    }
     return (
-        <form className="hero min-h-screen bg-base-200">
+        <form onSubmit={heandelRegister} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-2 text-green-400">Register now !</h1>
@@ -25,7 +47,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="text" placeholder="url" name='photourl' className="input input-bordered" required />
+                            <input type="text" placeholder="url" name='photourl' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">

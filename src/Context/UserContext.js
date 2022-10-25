@@ -11,6 +11,8 @@ const { successMessage } = AlartMessage()
 const UserContext = ({ children }) => {
     const [user, setUser] = useState(null)
     const [error, setError] = useState('');
+    console.log(user);
+
 
     //login & signUp f:
     const createUser = (email, pass) => createUserWithEmailAndPassword(auth, email, pass);
@@ -19,7 +21,7 @@ const UserContext = ({ children }) => {
     const googlelogin = () => signInWithPopup(auth, Provider);
 
     //Update user information :
-    const setUserNAme = (url, name) => updateProfile(auth.currentUser, {
+    const setUserNAme = (name, url) => updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: url
     })
