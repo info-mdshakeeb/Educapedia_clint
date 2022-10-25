@@ -10,7 +10,7 @@ const { successMessage } = AlartMessage()
 
 const UserContext = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [error, setErro] = useState('');
+    const [error, setError] = useState('');
 
     //login & signUp f:
     const createUser = (email, pass) => createUserWithEmailAndPassword(auth, email, pass);
@@ -33,7 +33,7 @@ const UserContext = ({ children }) => {
     },)
 
     const authInfo = {
-        user, setUser, error, setErro,
+        user, setUser, error, setError,
         googlelogin, createUser, loginWithEmail, logutOut,
         varifymail, setUserNAme, updatePassword
     }
