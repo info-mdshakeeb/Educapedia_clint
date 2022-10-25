@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { authUser } from '../Context/UserContext';
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
-    const { bookDetails } = useContext(authUser);
-
+    const data = useLoaderData()
+    const { name } = data;
     return (
         <div>
-            {bookDetails?.name}
+            {name}
         </div>
     );
 };

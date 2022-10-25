@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 
+
 const Navbar = () => {
+
     const { user, logutOut } = useContext(authUser)
     return (
         <div className="navbar bg-base-100 px-12 ">
@@ -15,6 +17,12 @@ const Navbar = () => {
                     <li><NavLink to='/faq'>FAQ</NavLink></li>
                     <li><NavLink to='/blog'>Blog</NavLink></li>
                 </ul>
+                <div className="form-control">
+                    <label className="label cursor-pointer">
+                        <input type="checkbox" className="toggle" />
+                    </label>
+                </div>
+
             </div>
             <div className="flex-none">
                 {user ?
