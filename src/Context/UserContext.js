@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Config/Firebase.init';
 import AlartMessage from '../Hooks/AlartMessage';
@@ -11,12 +11,12 @@ const { successMessage } = AlartMessage()
 const UserContext = ({ children }) => {
     const [user, setUser] = useState(null)
     const [error, setError] = useState('');
-    console.log(user);
+    // console.log(user);
 
 
     //login & signUp f:
     const createUser = (email, pass) => createUserWithEmailAndPassword(auth, email, pass);
-    const loginWithEmail = (email, pass) => loginWithEmail(auth, email, pass);
+    const loginWithEmail = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
     const logutOut = () => signOut(auth).then(re => successMessage('Logut Successfull'))
     const googlelogin = () => signInWithPopup(auth, Provider);
 
