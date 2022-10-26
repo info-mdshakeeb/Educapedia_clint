@@ -9,7 +9,7 @@ const CourseImg = ({ re }) => {
                 src={re.picture}
                 alt=''
             />
-            <div className='absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100 '>
+            <div className='absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-90'>
                 <h2 className='text-2xl text-white r'>{re.name}</h2>
             </div>
         </Link>

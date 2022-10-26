@@ -6,7 +6,7 @@ import { authUser } from '../Context/UserContext';
 const Navbar = () => {
     const { user, logutOut } = useContext(authUser)
     return (
-        <div className="navbar bg-base-100 md:px-12 ">
+        <div className="navbar  md:px-12 shadow-xl">
             <div className="flex-1">
                 <Link to='/' className="btn btn-ghost normal-case text-xl">Educapedia</Link>
             </div>
