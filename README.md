@@ -2,7 +2,7 @@
 
 live site: https://skb-login.web.app/
 
-bullet points :
+# bullet points :
 
 1. 3 login system Integrated ;
 2. message alart system ;
