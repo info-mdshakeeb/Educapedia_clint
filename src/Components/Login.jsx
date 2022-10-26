@@ -6,13 +6,23 @@ import AlartMessage from '../Hooks/AlartMessage';
 
 const Login = () => {
     const { successMessage, errorMessage } = AlartMessage()
-    const { googlelogin, setUser, loginWithEmail, setloading } = useContext(authUser)
+    const { googlelogin, setUser, loginWithEmail, setloading, githubLogin } = useContext(authUser)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
     const loginWithGoogle = () => {
         setloading(true)
         googlelogin()
+            .then(rs => {
+                setUser(rs.user)
+                successMessage('Login Success')
+                navigate(from, { replace: true })
+            })
+            .catch(er => errorMessage(er.message))
+    }
+    const loginWithGithub = () => {
+        setloading(true)
+        githubLogin()
             .then(rs => {
                 setUser(rs.user)
                 successMessage('Login Success')
@@ -61,7 +71,8 @@ const Login = () => {
                                         <div className="ml-5">Or</div>
                                         <div className="flex w-full">
                                             <FaGoogle className='mx-3 cursor-pointer' onClick={loginWithGoogle} ></FaGoogle>
-                                            <FaGithub className='cursor-pointer'></FaGithub>
+                                            <FaGithub className='cursor-pointer'
+                                                onClick={loginWithGithub}></FaGithub>
                                         </div>
                                     </div>
                                     <small>Dont have Accout go <Link to='/signup' className='link link-hover text-teal-400'> Registation </Link> Page</small>

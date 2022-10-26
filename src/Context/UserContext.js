@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Config/Firebase.init';
 import AlartMessage from '../Hooks/AlartMessage';
@@ -6,6 +6,7 @@ import AlartMessage from '../Hooks/AlartMessage';
 export const authUser = createContext();
 const auth = getAuth(app);
 const Provider = new GoogleAuthProvider();
+const GitProvaider = new GithubAuthProvider();
 const { successMessage } = AlartMessage()
 
 const UserContext = ({ children }) => {
@@ -19,6 +20,7 @@ const UserContext = ({ children }) => {
     const loginWithEmail = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
     const logutOut = () => signOut(auth).then(re => successMessage('Logut Successfull'))
     const googlelogin = () => signInWithPopup(auth, Provider);
+    const githubLogin = () => signInWithPopup(auth, GitProvaider);
 
     //Update user information :
     const setUserNAme = (name, url) => updateProfile(auth.currentUser, {
@@ -41,7 +43,7 @@ const UserContext = ({ children }) => {
     const authInfo = {
         user, setUser, error, setError,
         loading, setloading, bookDetails, setBookDetails,
-        googlelogin, createUser, loginWithEmail, logutOut,
+        googlelogin, createUser, loginWithEmail, githubLogin, logutOut,
         varifymail, setUserNAme, updatePassword
     }
     return (
