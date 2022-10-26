@@ -24,12 +24,12 @@ export const router = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <CourseDetail />,
-                loader: ({ params }) => fetch(`http://localhost:1100/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://educapedia-server-site.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoutes><Checkout></Checkout> </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:1100/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://educapedia-server-site.vercel.app/courses/${params.id}`)
             },
         ]
     },

@@ -5,7 +5,7 @@ import CourseNav from './CourseNav';
 const Courses = () => {
     const [courses, setCourses] = useState(null);
     useEffect(() => {
-        fetch('http://localhost:1100/courses')
+        fetch('https://educapedia-server-site.vercel.app/courses')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])
