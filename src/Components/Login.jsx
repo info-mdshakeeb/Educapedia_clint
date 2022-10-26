@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import AlartMessage from '../Hooks/AlartMessage';
 
 const Login = () => {
     const { successMessage, errorMessage } = AlartMessage()
-    const { googlelogin, setUser, loginWithEmail, setError, error, setloading } = useContext(authUser)
+    const { googlelogin, setUser, loginWithEmail, setloading } = useContext(authUser)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -29,10 +30,10 @@ const Login = () => {
             .then(re => {
                 setUser(re.user)
                 successMessage('login succesFull 9;')
-                setError('')
+
                 navigate(from, { replace: true })
             })
-            .catch(er => setError(er.message))
+            .catch(er => errorMessage(er.message))
     }
     return (
         <div className="">
@@ -58,12 +59,15 @@ const Login = () => {
                                     <label className="label">
                                         <p className="link link-hover"><small>Forgot password?</small></p>
                                     </label>
-                                    <p><small className=' text-red-500'>{error}</small></p>
+
                                     <small>Dont have Accout go <Link to='/signup' className='link link-hover text-teal-400'> Registation </Link> Page</small>
-                                    <button className='btn btn-primary my-3 w-1/2'>Login</button>
-                                    <div className="flex">
-                                        <p onClick={loginWithGoogle} className='btn btn-primary '>G</p>
-                                        <p className='btn btn-primary'>Git</p>
+                                    <div className="flex justify-between items-center">
+                                        <button className='btn btn-primary my-3 w-1/2'>Login</button>
+                                        <div className="ml-5">Or</div>
+                                        <div className="flex w-full">
+                                            <FaGoogle className='mx-3 cursor-pointer' onClick={loginWithGoogle} ></FaGoogle>
+                                            <FaGithub className='cursor-pointer'></FaGithub>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

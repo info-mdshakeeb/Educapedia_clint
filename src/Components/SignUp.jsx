@@ -6,7 +6,6 @@ import AlartMessage from '../Hooks/AlartMessage';
 const SignUp = () => {
     const { successMessage } = AlartMessage()
     const { error, setError, createUser, setUserNAme, varifymail } = useContext(authUser);
-
     const heandelRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -28,7 +27,6 @@ const SignUp = () => {
                     })
             })
             .catch(er => setError(er.message))
-        setError('')
     }
     return (
         <form onSubmit={heandelRegister} className="hero min-h-screen bg-base-200">

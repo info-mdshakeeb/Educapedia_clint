@@ -1,10 +1,9 @@
 import React from 'react';
+import { FaDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from "react-to-pdf";
 
-
 const ref = React.createRef();
-
 const CourseDetail = () => {
     const bookdata = useLoaderData()
     const { name, picture, description } = bookdata;
@@ -16,10 +15,12 @@ const CourseDetail = () => {
                 /></figure>
                 <div className="card-body">
                     <h2 className="card-title ">New course is released!</h2>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between my-10">
                         <p className='text-2xl'>{name}</p>
                         <Pdf targetRef={ref} filename={name}>
-                            {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>Download</button>}
+                            {({ toPdf }) => <FaDownload style={{ color: "red", width: '30px', height: '35px' }}
+                                className=" cursor-pointer mx-10"
+                                onClick={toPdf}></FaDownload>}
                         </Pdf>
                     </div>
                     <p>{description}</p>
@@ -27,7 +28,6 @@ const CourseDetail = () => {
                         <Link to={`/checkout/${bookdata.id}`}> <button className='btn btn-success'>Get premium access</button></Link>
                     </div>
                 </div>
-
             </div>
         </div>
     );
