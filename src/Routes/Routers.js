@@ -3,6 +3,7 @@ import Blog from "../Components/Blog";
 import Checkout from "../Components/Checkout";
 import CourseDetail from "../Components/CourseDetail";
 import Courses from "../Components/Courses";
+import Home from "../Components/Home";
 import Login from "../Components/Login";
 import SignUp from "../Components/SignUp";
 import Layout from "../Layout/Layout";
@@ -14,7 +15,8 @@ export const router = createBrowserRouter([
         element: <Layout />,
         errorElement: <p>Worng route</p>,
         children: [
-            { path: '/', element: <Courses /> },
+            { path: '/', element: <Home /> },
+            { path: '/home', element: <Home /> },
             { path: '/courses', element: <Courses />, },
             { path: '/blog', element: <Blog /> },
             { path: '/login', element: <Login /> },
