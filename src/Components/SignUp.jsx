@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authUser } from '../Context/UserContext';
 import AlartMessage from '../Hooks/AlartMessage';
 
 const SignUp = () => {
     const { successMessage } = AlartMessage()
-    const { error, setError, createUser, setUserNAme, varifymail } = useContext(authUser);
+    const { setError, createUser, setUserNAme, varifymail } = useContext(authUser);
+    const navigate = useNavigate()
     const heandelRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -23,6 +24,7 @@ const SignUp = () => {
                             .then(rs => {
                                 successMessage('Account Created')
                                 setError('Varifiaction mail sand Your mail')
+                                navigate('/')
                             })
                     })
             })
@@ -60,7 +62,7 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" placeholder="password" name='pass' className="input input-bordered" />
-                            <small className=' text-red-500 pt-2' >{error}</small>
+                            <small className=' text-red-500 pt-2' ></small>
                         </div>
 
                         <small>Alreay have account go

@@ -23,10 +23,10 @@ const Login = () => {
     const heandelLogin = (e) => {
         e.preventDefault()
         const form = e.target;
-        const eamil = form.email.value;
+        const email = form.email.value;
         const pass = form.pass.value;
         setloading(true)
-        loginWithEmail(eamil, pass)
+        loginWithEmail(email, pass)
             .then(re => {
                 setUser(re.user)
                 successMessage('login succesFull 9;')
@@ -56,11 +56,6 @@ const Login = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input type="text" placeholder="password" name='pass' className="input input-bordered" />
-                                    <label className="label">
-                                        <p className="link link-hover"><small>Forgot password?</small></p>
-                                    </label>
-
-                                    <small>Dont have Accout go <Link to='/signup' className='link link-hover text-teal-400'> Registation </Link> Page</small>
                                     <div className="flex justify-between items-center">
                                         <button className='btn btn-primary my-3 w-1/2'>Login</button>
                                         <div className="ml-5">Or</div>
@@ -69,6 +64,7 @@ const Login = () => {
                                             <FaGithub className='cursor-pointer'></FaGithub>
                                         </div>
                                     </div>
+                                    <small>Dont have Accout go <Link to='/signup' className='link link-hover text-teal-400'> Registation </Link> Page</small>
                                 </div>
                             </div>
                         </form>
