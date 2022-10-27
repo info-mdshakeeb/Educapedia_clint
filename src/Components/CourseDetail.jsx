@@ -8,7 +8,7 @@ const CourseDetail = () => {
     const bookdata = useLoaderData()
     const { name, picture, description } = bookdata;
     return (
-        <div className=" w-4/5 lg:w-3/5 mx-auto mt-10" ref={ref}>
+        <div className=" w-4/5 md:w-3/4 lg:w-1/2 mx-auto mt-10 pb-5 " ref={ref}>
             <div className="card bg-base-100 shadow-xl ">
                 <figure><img src={picture} alt=""
                     className='object-cover '
